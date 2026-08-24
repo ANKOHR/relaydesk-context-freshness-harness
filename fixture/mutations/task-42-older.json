@@ -1,0 +1,11 @@
+{
+  "source_id": "linear:TASK-42",
+  "source_type": "linear",
+  "locator": "https://example.invalid/linear/TASK-42?revision=v1",
+  "observed_at": "2026-08-24T08:30:00Z",
+  "effective_at": "2026-08-01T10:00:00Z",
+  "revision": "task-42-v1",
+  "text": "TASK-42 is in progress and targets an August preview.",
+  "entity_tags": ["relaydesk", "durable-receipts", "delivery-status"],
+  "facts": {"task_state": "in_progress", "target_release": "2026-08-preview"}
+}
