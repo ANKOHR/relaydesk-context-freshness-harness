@@ -1,0 +1,11 @@
+{
+  "source_id": "github:issue-17",
+  "source_type": "github",
+  "locator": "https://example.invalid/github/issues/17?revision=conflict",
+  "observed_at": "2026-08-24T08:10:00Z",
+  "effective_at": "2026-08-24T08:00:00Z",
+  "revision": "issue-17-conflict",
+  "text": "A reopened issue proposes acknowledging before persistence to reduce latency.",
+  "entity_tags": ["relaydesk", "durable-receipts", "acknowledgement"],
+  "facts": {"ack_timing": "before_persistence", "implementation_status": "reopened"}
+}
