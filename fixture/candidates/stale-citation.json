@@ -1,0 +1,7 @@
+{
+  "claim_id": "claim-ack-after-store-stale",
+  "text": "RelayDesk acknowledges only after the durable receipt is persisted.",
+  "kind": "fact",
+  "source_ids": ["docs:architecture"],
+  "source_hashes": ["d3cae11ca802f70ffd5b7260182151f805197b8828b263c8b6446a3ce0cd0b38"]
+}
