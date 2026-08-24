@@ -1,0 +1,7 @@
+{
+  "claim_id": "claim-hardware-key",
+  "text": "Every receipt is encrypted with a hardware key.",
+  "kind": "fact",
+  "source_ids": [],
+  "source_hashes": []
+}
