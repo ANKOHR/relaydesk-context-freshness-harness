@@ -1,0 +1,12 @@
+{
+  "source_id": "slack:thread-42",
+  "source_type": "slack",
+  "locator": "https://example.invalid/slack/thread-42",
+  "observed_at": "2026-08-23T09:30:00Z",
+  "effective_at": "2026-08-23T09:00:00Z",
+  "revision": "thread-42-v4",
+  "text": "Ari proposed early acknowledgement. Bea marked that proposal superseded; Chen confirmed acknowledgement happens only after the durable receipt is stored.",
+  "entity_tags": ["relaydesk", "durable-receipts", "acknowledgement"],
+  "facts": {"ack_timing": "after_persistence", "discussion_state": "resolved"},
+  "supersedes": "thread-42-v1"
+}
