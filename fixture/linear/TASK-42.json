@@ -1,0 +1,11 @@
+{
+  "source_id": "linear:TASK-42",
+  "source_type": "linear",
+  "locator": "https://example.invalid/linear/TASK-42",
+  "observed_at": "2026-08-22T12:00:00Z",
+  "effective_at": "2026-08-22T11:30:00Z",
+  "revision": "task-42-v2",
+  "text": "TASK-42 is verified for the September release. Receipt replay and duplicate acknowledgement tests pass.",
+  "entity_tags": ["relaydesk", "durable-receipts", "delivery-status"],
+  "facts": {"task_state": "verified", "target_release": "2026-09"}
+}
