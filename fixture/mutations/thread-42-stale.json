@@ -1,0 +1,11 @@
+{
+  "source_id": "slack:thread-42",
+  "source_type": "slack",
+  "locator": "https://example.invalid/slack/thread-42?revision=stale",
+  "observed_at": "2026-08-18T08:00:00Z",
+  "effective_at": "2026-08-18T07:00:00Z",
+  "revision": "thread-42-stale",
+  "text": "Ari says the release might be approved after final verification.",
+  "entity_tags": ["relaydesk", "delivery-status"],
+  "facts": {"release_approval": "tentative"}
+}
