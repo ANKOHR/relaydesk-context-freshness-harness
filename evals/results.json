@@ -1,0 +1,223 @@
+{
+  "suite": "relaydesk-context-freshness",
+  "cases_at_or_above_8": 8,
+  "stale_or_expired_claims_accepted": 0,
+  "unsupported_facts_accepted": 0,
+  "privacy_findings": 0,
+  "clean_replay_equal": true,
+  "useful_gate": true,
+  "cases": [
+    {
+      "id": "M01",
+      "name": "baseline_multi_source_context",
+      "status": "supported",
+      "reason_code": "current_evidence",
+      "checks": {
+        "freshness": true,
+        "provenance": true,
+        "conflict": true,
+        "deterministic": true,
+        "explanation": true,
+        "sanitisation": true
+      },
+      "score": 10,
+      "details": {
+        "source_ids": [
+          "docs:architecture",
+          "github:issue-17",
+          "linear:TASK-42",
+          "slack:thread-42"
+        ],
+        "source_hashes": [
+          "09a2c0da2055b45d3c7d6a4bd5fb7b20f89d1c1d78cd0697ced561648aa15cbd",
+          "c3da72dbeaa9638a0f7ee64663c9038de9d765d3851fdb1e1fc74e4fc921d477",
+          "d3cae11ca802f70ffd5b7260182151f805197b8828b263c8b6446a3ce0cd0b38",
+          "6ad3f8a4b17c5e04043601e3c85517cf8dd49745f3a870e098023aa693044013"
+        ],
+        "locators": [
+          "https://example.invalid/github/issues/17",
+          "https://example.invalid/linear/TASK-42",
+          "https://example.invalid/docs/architecture",
+          "https://example.invalid/slack/thread-42"
+        ]
+      }
+    },
+    {
+      "id": "M02",
+      "name": "identical_reingest_is_idempotent",
+      "status": "supported",
+      "reason_code": "identical_content_ignored",
+      "checks": {
+        "freshness": true,
+        "provenance": true,
+        "conflict": true,
+        "deterministic": true,
+        "explanation": true,
+        "sanitisation": true
+      },
+      "score": 10,
+      "details": {
+        "records_added_on_second_ingest": 0,
+        "normalised_results_equal": true
+      }
+    },
+    {
+      "id": "M03",
+      "name": "changed_source_invalidates_old_citation",
+      "status": "stale",
+      "reason_code": "cited_hash_not_current",
+      "checks": {
+        "freshness": true,
+        "provenance": true,
+        "conflict": true,
+        "deterministic": true,
+        "explanation": true,
+        "sanitisation": true
+      },
+      "score": 10,
+      "details": {
+        "old_hash": "d3cae11ca802f70ffd5b7260182151f805197b8828b263c8b6446a3ce0cd0b38",
+        "current_hash": "0f84012418a3d326dbc19b2b11e0f454782d4c8cd49662b1148db1c449e0dd2d",
+        "decision": {
+          "claim_id": "claim-old-doc",
+          "status": "stale",
+          "reasons": [
+            "cited_hash_not_current"
+          ]
+        }
+      }
+    },
+    {
+      "id": "M04",
+      "name": "expired_discussion_cannot_support_status",
+      "status": "unsupported",
+      "reason_code": "source_ttl_expired",
+      "checks": {
+        "freshness": true,
+        "provenance": true,
+        "conflict": true,
+        "deterministic": true,
+        "explanation": true,
+        "sanitisation": true
+      },
+      "score": 10,
+      "details": {
+        "expired_source_ids": [
+          "slack:thread-42"
+        ],
+        "expired_claims_accepted": 0,
+        "decision": {
+          "claim_id": "claim-release",
+          "status": "unsupported",
+          "reasons": [
+            "source_ttl_expired"
+          ]
+        }
+      }
+    },
+    {
+      "id": "M05",
+      "name": "current_sources_conflict",
+      "status": "review",
+      "reason_code": "current_sources_disagree",
+      "checks": {
+        "freshness": true,
+        "provenance": true,
+        "conflict": true,
+        "deterministic": true,
+        "explanation": true,
+        "sanitisation": true
+      },
+      "score": 10,
+      "details": {
+        "conflicts": [
+          {
+            "fact": "ack_timing",
+            "values": [
+              "after_persistence",
+              "before_persistence"
+            ],
+            "source_ids": [
+              "docs:architecture",
+              "github:issue-17"
+            ]
+          }
+        ],
+        "silent_winner": false,
+        "decision": {
+          "claim_id": "claim-conflict",
+          "status": "review",
+          "reasons": [
+            "current_sources_disagree"
+          ]
+        }
+      }
+    },
+    {
+      "id": "M06",
+      "name": "older_event_arriving_late_does_not_regress",
+      "status": "supported",
+      "reason_code": "lower_effective_at_ignored",
+      "checks": {
+        "freshness": true,
+        "provenance": true,
+        "conflict": true,
+        "deterministic": true,
+        "explanation": true,
+        "sanitisation": true
+      },
+      "score": 10,
+      "details": {
+        "current_revision": "task-42-v2",
+        "older_revision_selected": false,
+        "ingest_reason": "appended_historical"
+      }
+    },
+    {
+      "id": "M07",
+      "name": "unsupported_fact_is_rejected",
+      "status": "unsupported",
+      "reason_code": "no_current_evidence",
+      "checks": {
+        "freshness": true,
+        "provenance": true,
+        "conflict": true,
+        "deterministic": true,
+        "explanation": true,
+        "sanitisation": true
+      },
+      "score": 10,
+      "details": {
+        "valid_current_citations": 0,
+        "unsupported_facts_accepted": 0,
+        "decision": {
+          "claim_id": "claim-hardware-key",
+          "status": "unsupported",
+          "reasons": [
+            "no_current_evidence"
+          ]
+        }
+      }
+    },
+    {
+      "id": "M08",
+      "name": "human_correction_survives_rebuild",
+      "status": "supported",
+      "reason_code": "durable_human_correction",
+      "checks": {
+        "freshness": true,
+        "provenance": true,
+        "conflict": true,
+        "deterministic": true,
+        "explanation": true,
+        "sanitisation": true
+      },
+      "score": 10,
+      "details": {
+        "correction_persisted": true,
+        "superseded_claim_blocked": true,
+        "normalised_results_equal": true
+      }
+    }
+  ]
+}
