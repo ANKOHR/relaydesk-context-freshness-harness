@@ -1,0 +1,11 @@
+{
+  "source_id": "github:issue-17",
+  "source_type": "github",
+  "locator": "https://example.invalid/github/issues/17",
+  "observed_at": "2026-08-21T15:00:00Z",
+  "effective_at": "2026-08-21T14:30:00Z",
+  "revision": "issue-17-v3",
+  "text": "Issue 17 is implemented. The accepted design persists the receipt before acknowledgement and keeps outbound actions behind approval.",
+  "entity_tags": ["relaydesk", "durable-receipts", "delivery-status"],
+  "facts": {"ack_timing": "after_persistence", "implementation_status": "implemented"}
+}
