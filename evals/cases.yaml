@@ -1,0 +1,17 @@
+version: 1
+suite: relaydesk-context-freshness
+fixture_product: RelayDesk
+gates:
+  cases_at_or_above_8: 7
+  stale_or_expired_claims_accepted: 0
+  unsupported_facts_accepted: 0
+  privacy_findings: 0
+cases:
+  - {id: M01, name: baseline_multi_source_context}
+  - {id: M02, name: identical_reingest_is_idempotent}
+  - {id: M03, name: changed_source_invalidates_old_citation}
+  - {id: M04, name: expired_discussion_cannot_support_status}
+  - {id: M05, name: current_sources_conflict}
+  - {id: M06, name: older_event_arriving_late_does_not_regress}
+  - {id: M07, name: unsupported_fact_is_rejected}
+  - {id: M08, name: human_correction_survives_rebuild}
